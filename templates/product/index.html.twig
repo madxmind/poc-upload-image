@@ -21,7 +21,11 @@
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>
-                    <img src="{{ vich_uploader_asset(product)|imagine_filter('squared_thumbnail_small') }}" alt="{{ product.name }}"/>
+                    {% if product.image %}
+                        <img src="{{ vich_uploader_asset(product)|imagine_filter('squared_thumbnail_small') }}" alt="{{ product.name }}"/>
+                    {% else %}
+                        NO IMAGE
+                    {% endif %}
                 </td>
                 <td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
