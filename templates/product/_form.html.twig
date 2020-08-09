@@ -1,4 +1,15 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_widget(form._token) }}
+    <button type="button" class="btn btn-primary collection-add" data-collection="{{ form.medias.vars.id }}">
+        Ajouter
+    </button>
+    <div id="{{ form.medias.vars.id }}" class="collection" data-index="{{ form.medias|length == 0 ? 0 : form.medias|last.vars.name + 1 }}" data-prototype="{{ include('media/_form.html.twig', { form: form.medias.vars.prototype })|e('html_attr') }}">
+        {% for media in form.medias %}
+            {{ include('media/_form.html.twig', { form: media }) }}
+        {% endfor %}
+    </div>
+
+    {{ form_row(form.name) }}
+    {{ form_row(form.imageFile) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_end(form, { render_rest: false }) }}

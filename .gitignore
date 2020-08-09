@@ -18,3 +18,8 @@
 /public/media/cache/
 /public/media_custom/cache/
 ###< liip/imagine-bundle ###
+
+
+###> vich_uploader_bundle ###
+/public/uploads
+###< vich_uploader_bundle ###
